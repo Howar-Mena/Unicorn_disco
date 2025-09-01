@@ -10,10 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet"> 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+
 </head>
 <body>
     <div class="header">
         <a href="index.html"><img src="Images/Discologo.png" class="logo" alt="Disco Logo"/> </a>
+        <div id="hamburger"></div>
         <div class="header-topnav">
           <a href="about.html">About</a>
           <a href="events.html">Events</a>
@@ -79,6 +83,29 @@
         </div>
       
     </footer>
+
+    <script>
+  const hamburger = lottie.loadAnimation({
+    container: document.getElementById('hamburger'),
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    path: 'Images/Hamburger menu.json' // make sure path is correct
+  });
+
+  let menuOpen = false;
+  document.getElementById('hamburger').addEventListener('click', () => {
+    if (!menuOpen) {
+      hamburger.playSegments([0, 30], true);  // open animation
+      document.querySelector('.header-topnav').classList.add('show');
+    } else {
+      hamburger.playSegments([30, 0], true); // close animation
+      document.querySelector('.header-topnav').classList.remove('show');
+    }
+    menuOpen = !menuOpen;
+  });
+</script>
+
 </body>
 </html>
 
